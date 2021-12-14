@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입력과 출력을 가진 함수</title>
+</head>
+<body>
+    <script>
+        // 일을 시키는 사람으로 부터 값을 받아와 더해서 리턴하는 함수
+        function sum(start, end) {
+            let sum = 0;
+            for(let i=start; i<=end; i++) {
+                sum+=i;
+            }
+            return sum;
+        }
+
+
+
+        // 사용하는 사람 입장 : parameter 타입과 개수, 이름
+        console.log(sum(1,10));
+
+        const a = sum(1, 20);
+        console.log(a);
+    </script>
+</body>
+</html>

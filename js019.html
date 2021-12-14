@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this에 관하여 3</title>
+</head>
+<body>
+    <h1>상황에 따라 this가 바뀌는 것을 구경하자</h1>
+    <script>
+        const sungjuck = {
+            jumsu : 70,
+            print: function() {
+                console.log(this);
+            }
+        };
+
+        sungjuck.print();                               // print를 sungjuck 객체이름으로 호출                            
+
+        const globalVariable = sungjuck.print;
+        // 전역변수의 this는 window
+        globalVariable();
+
+        // js의 this는 상황에 따라 달라진다 -> console.log로 출력하고 확인하면서 작업하자
+    </script>
+</body>
+</html>

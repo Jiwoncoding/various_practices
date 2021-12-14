@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1부터 100까지 홀수의 합계, 짝수의 합계
+        // 1. 홀수의 합계, 짝수의 합계를 각각 반복문으로 구하기
+        let sumOfOdd=0, sumOfEven=0;
+        for(let i=1; i<=100; i+=2) {
+            sumOfOdd += i;
+        }
+        for(let i=2; i<=100; i+=2) {
+            sumOfEven += i;
+        }
+        // 2. 반복하면서 홀수의 합계, 짝수의 합계를 따로 구하기
+        sumOfOdd=0;
+        sumOfEven=0;
+        for(let i=1; i<=100; i++) {
+            if(i%2==0) {
+                sumOfEven+=i;
+            } else {
+                sumOfOdd+=i;
+            }
+        }
+        // 3. boolean 변수에 따라 짝수 또는 홀수의 합계를 구하기
+        sumOfOdd=0;
+        sumOfEven=0;
+        let isEven = false;
+        for(let i=1; i<=100; i++) {
+            if(isEven===true) {
+                sumOfEven+=i;
+                isEven = false;
+            } else {
+                sumOfOdd+=i;
+                isEven = true;
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

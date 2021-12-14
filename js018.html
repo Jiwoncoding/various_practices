@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this에 관하여 2</title>
+</head>
+<body>
+    <script>
+        // 전역과 지역(local)
+        // 중괄호가 변수의 사용 범위를 지정
+
+        // 전역(global) 스코프 : {}에 소속되지 않음. 어디서나 사용가능
+        const a = 10;
+        {
+            const b = 20;                       // a와 b만 출력 가능
+        }
+
+        {
+            const c = 30;                       // a와 c만 출력 가능
+            {
+                const d =40;                    // a, c, d 출력 가능
+            }
+        }
+
+
+        // ES5의 경우 전역이 window -> window가 너무 붐벼
+        var x = 10;
+        console.log(window.x);                  
+
+        console.log(this);
+    </script>
+</body>
+</html>

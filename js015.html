@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수와 객체</title>
+</head>
+<body>
+    <script>
+        // 작업은 데이터들과 기능들로 구성
+        /*
+        const kor = 75;
+        const eng = 80;
+        function isPass(cutline) {
+            return kor>=cutline && eng>=cutline;
+        }
+        
+        isPass(70);
+        */
+       
+        // 객체 지향(OOP)
+        // 성적 객체는 두 개의 값(속성)과 한 개의 기능(함수->method)으로 구성
+        // 객체를 구성하는 kor, eng, isPass를 객체의 member라고 한다
+        const sungjuck = {
+            kor: 75,
+            eng: 80,
+            // 객체는 자기일은 자기가 한다
+            // 성적 객체는 커트라인을 알고있어야 해
+            isPass: function () {
+                return kor>=70 && eng>=70;
+            }
+        }
+
+        console.log(sungjuck.isPass());
+
+    </script>
+</body>
+</html>

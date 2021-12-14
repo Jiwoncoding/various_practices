@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 제어문
+        //      조건 : [if], switch
+        //      반복 : [for], while, do~while
+        //      제어 : [break], [continue] - 반드시 미리 skip
+
+
+        // 1에서 1000사이의 7의 배수와 9의 배수의 합계를 구하시오
+        // 단 7과 9의 공배수는 제외하시오
+        let sum=0; sumOfCommonMultiple=0;
+        for(let i=1; i<=1000; i++) {
+            if(i%7==0 || i%9==0) {
+                sum+=i;
+            }
+            if(i%7==0 && i%9==0) {
+                sumOfCommonMultiple+=i;
+            }
+        }
+        console.log(sum - sumOfCommonMultiple);
+
+        // 1~1000사이에서 7과 9의 공배수를 제외한 7과 9의 배수의 합계를 구하시오
+        let sum = 0;
+        for(let i=1; i<=1000; i++) {
+            if(i%7==0 && i%9==0) {
+                continue;
+            }
+            if(i%7==0 || i%9==0) {
+                sum+=i;
+            }
+        }
+        console.log(sum);
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+</head>
+<body>
+    <script>
+        // this는 객체 자신을 의미(js에서는 상황에 따라 바뀐다)
+        const sungjuck1 = {
+            kor:87,
+            eng:70,
+            isPass: function() {
+                return this.kor>=70 && this.eng>=70;
+            }
+        };
+        const sungjuck2 = {
+            kor:65,
+            eng:75,
+            isPass: function() {
+                return this.kor>=70 && this.eng>=70;
+            }
+        };
+
+        console.log(sungjuck1.isPass());        // 합격
+        console.log(sungjuck2.isPass());        // 불합격
+    </script>
+</body>
+</html>

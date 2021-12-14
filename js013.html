@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결과가 있는 함수</title>
+</head>
+<body>
+    <script>
+        function sum() {
+            let sum = 0;
+            for(let i=1; i<=10; i++) {
+                sum+=i;
+            }
+            // 함수가 끝나면 결과를 작업을 시킨 사람에게 반납
+            return sum;
+        }
+
+        const a = sum();
+        // 함수를 호출하면 실행한 후 결과값으로 바뀌게 된다
+
+        // 12.html의 함수는 결과값이 없다 -> return을 이용해 결과를 추가
+
+        // 현재의 문제
+        // sum() 함수의 실행 결과는 항상 55
+    </script>
+</body>
+</html>
