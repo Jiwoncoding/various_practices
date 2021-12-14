@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 6.22가 아보가르드 수라고 하자. 6.02인데 실수로 6.22로 입력했다
+        let b = 6.02 * 1200000000 * 3.54;
+
+        // 상수
+        // literal : 값자체 (이름없는 상수)
+        // const를 이용한 이름을 가진 상수
+        const AVOGADRO = 6.02;
+
+
+        let c = AVOGADRO * 1200000000 * 3.54;
+
+        // 난해한 코드
+        let x = 365*24*60*60;
+        
+        const DAYS_OF_YEAR = 365;
+        // let daysOfYear = 365;                    // Camel 표기법(자바, 자바스크립트)
+        const HOURS_OF_DAY = 24;
+        const MINITES_OF_HOUR = 60;
+        const SECONDS_OF_MINITE = 60;
+
+        // 이해하기 쉽고 유지보수도 쉬운 코드
+        const secondsOfYear = DAYS_OF_YEAR * HOURS_OF_DAY * MINITES_OF_HOUR * SECONDS_OF_MINITE;
+
+
+    </script>
+</body>
+</html>

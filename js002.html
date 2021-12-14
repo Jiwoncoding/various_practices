@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const a = '17';
+        const b = 17;
+
+        // js가 도와줘서 아래처럼 비교해되 된다 -> 애매모호하다
+        if(a==b) {
+            alert("==로 일치합니다");
+        }
+
+        // 프로그래머가 명확하게 지시
+        if(parseInt(a)===b) {
+            alert("===로 일치합니다");
+        }
+
+    </script>
+</body>
+</html>
