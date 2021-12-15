@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas { width: 500px; height:500px; border: 1px solid red; }
+    </style>
+    <script>
+        function mousemoveHandler(event) {
+            const x = event.pageX;
+            const y = event.pageY;
+            position.innerHTML = "X:" + x + ", Y:" + y;
+        }
+        function mousedownHandler(event) {
+            if(event.which===1) {
+                click.innerHTML = "왼쯕 버튼 누름";
+            } else if(event.which===2) {
+                click.innerHTML = "휠버튼 누름";
+            } else if(event.which===3) {
+                click.innerHTML = "오른쪽 버튼 누름";
+            }
+        } 
+        window.onload=function() {
+            const canvas = document.querySelector('#canvas');
+            const position = document.querySelector('#position');
+            const click = document.querySelector('#click');
+            canvas.addEventListener('mousemove', mousemoveHandler);
+            canvas.addEventListener('mousedown', mousedownHandler);
+        }
+    </script>
+</head>
+<body>
+    <div id='canvas'></div>
+    <p id='position'></p>
+    <p id='click'></p>
+</body>
+</html>

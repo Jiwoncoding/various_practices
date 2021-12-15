@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM level 0 이벤트 모델</title>
+</head>
+<body>
+    html 요소의 on이벤트이름 속성을 이용해 처리하는 방식 - 고전적 이벤트 모델
+    <br>
+    <button onclick='hello();'>hello</button>
+    <button id='insa'>인사</button>
+    <script>
+        function hello() {
+            alert('hello');
+        }
+
+        const insaBtn = document.querySelector('#insa');
+        insaBtn.onclick = hello;
+
+    </script>
+</body>
+</html>

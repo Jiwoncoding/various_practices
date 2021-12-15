@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas { width: 500px; height:500px; border: 1px solid red; }
+    </style>
+    <script>
+        // load 이벤트 : html DOM이 만들어지고 나면 
+        // window.onload를 여러개 사용할 수는 없다
+        // window.onload에 해당하는 jQuery 이벤트가 document.ready
+        //          document.ready는 여러개 사용할 수 있다
+        window.onload=function() {
+            const canvas = document.querySelector('#canvas');
+            const position = document.querySelector('#position');
+            const click = document.querySelector('#click');
+            canvas.addEventListener('mousemove', function(event) {
+                const x = event.pageX;
+                const y = event.pageY;
+                position.innerHTML = "X:" + x + ", Y:" + y;
+            });
+            canvas.addEventListener('mousedown', function(event) {
+                if(event.which===1) {
+                    click.innerHTML = "왼쯕 버튼 클릭";
+                } else if(event.which===2) {
+                    click.innerHTML = "휠버튼 클릭";
+                } else if(event.which===3) {
+                    click.innerHTML = "오른쪽 버튼 클릭";
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id='canvas'></div>
+    <p id='position'></p>
+    <p id='click'></p>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM level 2 이벤트 모델</title>
+</head>
+<body>
+    <button onclick='level0()'>안녕1</button>
+    <button id='insa2'>안녕2</button>
+    <button id='insa3'>안녕3</button>
+    <script>
+        function level0() {
+            alert('hello');
+        }
+
+        const insa2 = document.querySelector('#insa2');
+        const insa3 = document.querySelector('#insa3');
+
+        // DOM level 0
+        insa2.onclick = level0;
+
+        // DOM level 2 - 이벤트 처리 표준. jQuery에서는 아래 코드를 간단히 작성한다
+        // 이벤트 소스 - insa3
+        // 이벤트 객체 - e (필요한 경우 파라미터로 지정)
+        // 이벤트 핸들러 - 익명함수
+        insa3.addEventListener('click', function(e) {
+            alert(e.pageX);
+        });
+
+ 
+    </script>
+</body>
+</html>
