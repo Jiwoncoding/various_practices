@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' href="http://localhost:8081/contacts/css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="http://localhost:8081/contacts/script/main.js"></script>
+<title>Insert title here</title>
+<script>
+	// 주소
+	// read.html에 접근하는 주소 : read.html?no=번호 -> 번호 잘라내기
+	// rest 방식으로 회원정보를 요청하는 주소 : http://sample.bmaster.kro.kr/contacts/+ 번호
+	// rest 방식으로 회원정보를 변경하는 주소 : http://sample.bmaster.kro.kr/contacts/+ 번호
+	//		파라미터로 번호, 이름, 주소, 연락처를 보내야한다
+	// rest 방식으로 프사를 변경하는 주소 : http://sample.bmaster.kro.kr/contacts/+ 번호 + /photo
+	//		파일업로드를 하려면 multipart/form-data
+	
+	const no = parseInt(location.search.substr(location.search.indexOf('=')+1));
+	if(isNaN(no)==true) {
+		alert('잘못된 접근입니다');
+		location.href = 'list.html';
+	}
+	
+	function printContact(contact) {
+		$('#no').text(contact.no);
+		$('#name').text(contact.name);
+		$('#photo').attr('src', contact.photo);
+		$('#address').val(contact.address);
+		$('#tel').val(contact.tel);
+	}
+	
+	$(document).ready(function () {
+		$.ajax('http://sample.bmaster.kro.kr/contacts/'+no).done(result=>printContact(result));
+		
+		$('#change').click(function () {
+			// $는 html요소를 선택한 다음 사용하기 쉽게 양념쳤다
+			// $('아이디 선택자')[0]  : jQuery로 선택한 html
+			// $('#new_photo')[0] : <input type='file' id='new_photo' multiple>
+			
+			// file input 요소는 선택한 파일들을 files라고 하는 배열 속성에 저장한다
+			// 파일을 하나만 업로드하는 경우 그 파일은 files[0]가 된다
+			
+			// js 객체를 만든다음 $.ajax의 data 속성에 지정하면 urlencoded로 자동 변경된다(processData)
+			const params = {
+				no: $('#no').text(),
+				name: $('#name').text(),
+				address : $('#address').val(),
+				tel: $('#tel').val()
+			}
+			
+			// 주소와 연락처를 변경하고
+			$.ajax({
+				url: 'http://sample.bmaster.kro.kr/contacts/' + no,
+				method: 'put',
+				data: params,
+				success: function() {
+					// 성공하면 사진을 확인하자
+					if($('#new_photo')[0].files[0]!=undefined) {
+						// <form enctype='multipart/form-data'>에 대한 자바스크립트 객체 생성
+						const formData = new FormData();
+						formData.append('photo', $('#new_photo')[0].files[0]);
+						$.ajax({
+							url: 'http://sample.bmaster.kro.kr/contacts/' + no + '/photo',
+							method: 'post',
+							data: formData,
+							// 파일을 업로드할 때는 processData를 꺼야 한다
+							processData: false,
+							// false를 주면 contentType이 multipart/form-data가 된다
+							contentType: false,
+							success: function() {
+								location.reload();
+							}
+						});
+					} else
+						location.reload();
+				}
+			})
+			
+		})
+	});
+</script>
+</head>
+<body>
+	<div id="page">
+		<header id="header">
+		</header>
+		<nav id="nav">
+		</nav>
+		<div id="main">
+			<aside id="aside">
+			</aside>
+			<section>
+				<table>
+					<tr><td id='no'></td></tr>
+					<tr><td id='name'></td></tr>
+					<tr><td><img id='photo' width="500px"></td></tr>
+					<tr><td><input type='file' id='new_photo'></td><tr>
+					<tr><td>주소: <input type='text' id='address'></td></tr>
+					<tr><td>연락처 : <input type='text' id='tel'></td></tr>
+				</table>
+				<button id='change'>변경</button>
+				<button>삭제</button>
+			</section>
+		</div>
+		<footer id="footer">
+		</footer>
+	</div>
+</body>
+</html>

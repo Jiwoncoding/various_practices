@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' href="http://localhost:8081/contacts/css/main.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="http://localhost:8081/contacts/script/main.js"></script>
+<script src="http://localhost:8081/contacts/script/list.js"></script>
+<script>
+    const pageno = getPageno();
+    const url = 'http://sample.bmaster.kro.kr/contacts?pageno='+pageno+"&pagesize="+PAGE_SIZE;
+    $.ajax(url).done(result=>{
+    	// result : pageno, pagesize, totalcount, contacts
+        const pagination = getPagination(result);
+        printContacts(result.contacts);
+        printPagination(pagination, pageno);
+    });
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="page">
+		<header id="header">
+		</header>
+		<nav id="nav">
+		</nav>
+		<div id="main">
+			<aside id="aside">
+			</aside>
+			<section>
+				<div id="contact_div">
+		            <table class='table'>
+		                <thead>
+		                    <tr><th>번호</th><th>이름</th><th>주소</th><th>연락처</th></tr>
+		                </thead>
+		                <tbody id="list">
+		                </tbody>
+		            </table>
+		        </div>
+		        <div id="pagination_div" style='text-align: center;'>
+		            <ul class="pagination">
+		            </ul>
+		        </div>
+			</section>
+		</div>
+		<footer id="footer">
+		</footer>
+	</div>
+</body>
+</html>
