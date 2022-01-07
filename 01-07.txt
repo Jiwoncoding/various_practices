@@ -1,0 +1,10 @@
+- java 종류
+	java se : standard edition
+	java ee : enterprise edition -> 기업용 사이트 개발용 -> 무겁고 복잡하다 -> spring에 의해서 대체
+		
+- 자바의 전형적인 개발 방식
+	자바는 oracle 소유 -> 특정회사가 소유하고 있는 언어는 개발자 입장에서 좀 꺼려진다
+					-> 관련사들끼리 위원회를 만들어서 관리(JSR)
+	자바에서 표준이라고 하면 종이쪼가리(스펙)
+					-> 구현은 서드파티 회사들이 알아서
+	Java EE 		-> 아파치 재단으로 넘김 -> Jakarta EE
