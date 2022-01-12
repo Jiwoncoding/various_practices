@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>함수, 화살표 함수의 차이점 : this가 다르다</title>
+    <script>
+        // 함수의 경우 상황에 따라 this가 바뀐다
+        // 화살표 함수의 경우는 함수를 실행할 때의 this로 고정(바뀌지 않는다)
+        const sample = {
+            irum: '홍길동',
+            print: function() {
+                console.log(this.irum);
+            }
+        };
+        sample.print();
+
+
+        $(document).ready(function() {
+            $('#click').click(function() {
+                console.log("---- 버튼 클릭 이벤트 핸들러에서 this는 버튼 ----")
+                console.log(this);
+                $.ajax({
+                    url: 'http://sample.bmaster.kro.kr/contacts',
+                    success:function() {
+                        console.log("---- $.ajax 내부에서는 ajax 객체가 this ----")
+                        console.log(this);    
+                    }
+                });
+
+                $.ajax('http://sample.bmaster.kro.kr/contacts').done(function() {
+                    console.log("---- ajax 객체 ----")
+                    console.log(this); 
+                });
+
+                $.ajax('http://sample.bmaster.kro.kr/contacts').done(()=>{
+                    console.log('화살표 함수는 this가 한번 만들어지고나면 변경되지 않는다')
+                    console.log("---- 버튼 ----")
+                    console.log(this); 
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+    <button id='click'>클릭하세요</button>
+</body>
+</html>

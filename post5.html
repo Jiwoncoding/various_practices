@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        const params = {
+            name: 'spring',
+            tel:'1234',
+            address: '서울시'
+        };
+
+        // 폼이 있다면 $(폼).serialize() -> urlencoded 변환 후 data에 지정 
+        // params를 바로 data에 지정 (processData 속성에 의해 urlencoded로 변환)
+
+        // 만약 name, tel, address, photo를 같이 넘긴다면
+        //      name, tel, address, photo로 form을 구성하고
+        //      const formData = new FormData($(폼)[0]);
+
+        // const formData = new FormData(); -> formData.append('이름', 값);
+
+        // json으로 넘기는 방식
+        $.ajax({
+            url: 'http://sample.bmaster.kro.kr/contacts',
+            method: 'post',
+            data: JSON.stringify(params),
+            //dataType: 'json',                                 // 서버에서 json으로 보내올 거다
+            contentType:'application/json',                     // 서버로 넘기는 데이터 형식
+            success:function(result) {
+                console.log(result);
+            }
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

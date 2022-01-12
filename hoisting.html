@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hoist</title>
+    <script>
+        // int a = 10;      a라는 변수를 만들고 10을 대입해라
+        // int a;           변수 선언
+        // a = 10;          변수 초기화
+        // 호이스트 : ES5에서 변수 선언은 제일 위로 끌어올려진다
+
+        /*
+        console.log(a);         // undefined
+        console.log(b);         // not defined
+        var a = 10;
+        const b = 10;
+        */
+        var a = undefined;
+        console.log(a);         // undefined
+        console.log(b);         // not defined
+        a = 10;
+        const b = 10;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

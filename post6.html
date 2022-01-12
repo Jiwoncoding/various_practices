@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const formData = new FormData($('#frm')[0]);
+
+        const formData2 = new FormData();
+        formData2.append('photo', $('#photo')[0].files[0]);
+        formData2.append('name', $('#name').val());
+
+    </script>
+</head>
+<body>
+    <!--
+        연락처를 추가 
+        1. 연락처 추가할 때는 사진을 업로드할 수 없다(무조건 기본 이미지)
+        2. 사진 변경
+
+        사진을 포함해서 연락처를 추가하다록 하겠다
+        1번 작업이 성공하면 완료
+        1번 작업이 성공해서 2번 작업을 수행 -> 성공했다 
+                                          -> 실패
+        1번 작업이 실해한다
+    -->
+    <form id='frm'>
+        <input type="text" name="name" id="name" value='summer'>
+        <input type="text" name="tel" id="tel" value='1234'>
+        <input type="text" name="address" id="address" value='인천'>
+        <input type="file" name="photo" id="photo">
+    </form>
+</body>
+</html>

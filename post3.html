@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        // 1. MVC 방식은 프론트에서 form을 서밋 -> 서버에서 프론트 화면 이동
+        // 2. REST 방식은 화면이동없이 서버 요청을 병렬 처리. 응답이 오면 화면을 부분 갱신
+
+        // rest 방식에서 $.ajax 요청을 urlencoded로 보내자
+        // get 방식 pageno=1&pagesize=10
+        $.ajax('http://sample.bmaster.kro.kr/contacts?pageno=1&pagesize=10');
+
+        $.ajax({
+            url: 'http://sample.bmaster.kro.kr/contacts',
+            data: 'pageno=1&pagesize=10'
+        });
+
+        const params={
+            pageno: 1,
+            pagesize: 10
+        }
+        $.ajax({
+            url: 'http://sample.bmaster.kro.kr/contacts',
+            data: params,
+            // data속성에 js 객체를 주면 urlencoded로 변환하는 설정. 기본값은 true
+            processData: true
+        });
+
+        const params = {};
+        if($('#name').val()!='')
+            params.name = $('#name').val();
+        if($('#nai').val()!='')
+            params.nai = $('#nai').val();
+    </script>
+
+</head>
+<body>
+    <input type="text" name="irum" id="irum" value='spring'><br>
+    <input type="text" name="nai" id="nai" value='20'><br>
+    <button type='button' id='ok'>확인</button>
+</body>
+</html>

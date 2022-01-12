@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const params = {
+            name : $('#name').val(),
+            tel: $('#tel').val(),
+            address: $('#address').val()
+        };
+        $.ajax({
+            url: 'http://sample.bmaster.kro.kr/contacts',
+            data: JSON.stringify(params),
+            // 'text/html', 'text/plain', 'image/jpg', 'application/excel'
+            contentType: 'application/json',
+            method:'post',
+            success:function(result) {
+                if(resuslt.status=="success") {
+                    const photo = $('#photo')[0].files[0];
+                    if(photo!=undefined) {
+                        // 사진을 변경하는 경우
+                        const formData = new FormData();
+                        formData.append('photo', photo);
+                        $.ajax({
+                            url:'http://sample.bmaster.kro.kr/contacts/' + result.no + '/photo',
+                            method: 'post',
+                            data: formData,
+                            success:function() {
+                                // 사진에 변경에 성공했건 실패했건 read.html로 간다
+                                location.href= 'read.html?no=' + result.no;
+                            }
+                        })
+                    } else {
+                        // 사진을 변경하지 않는 경우....작업 성공
+                        location.href = '이동할 페이지';
+                    }
+
+                } else {
+                    location.href = 'post7.html?error';
+                }
+            }
+        })
+    </script>
+</head>
+<body>
+    <form id='frm'>
+        <input type="text" name="name" id="name" value='summer'>
+        <input type="text" name="tel" id="tel" value='1234'>
+        <input type="text" name="address" id="address" value='인천'>
+        <input type="file" name="photo" id="photo">
+    </form>
+</body>
+</html>

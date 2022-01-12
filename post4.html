@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function() {
+            // form을 가지고 FormData를 만드는 경우
+            const frm = new FormData($('#frm')[0]);
+            
+            // formData에 내용을 확인하려면 아래와 같이 작성하면 된다
+            for(let value of frm.values()) {
+                console.log(value);
+                // 파일을 선택하지 않아도 파일은 존재한다 -> 서버에서 이 파일을 받으면 null이 아니라 빈파일
+            }
+        })
+        
+
+
+    </script>
+</head>
+<body>
+    <form id='frm' enctype="multipart/form-data">
+        <input type="text" name="irum" id="irum" value='spring'><br>
+        <input type="file" name="photo" id="photo"><br>
+        <button type='button'>확인</button>
+    </form>]
+</body>
+</html>

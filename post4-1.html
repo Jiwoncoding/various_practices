@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function() {
+            // irum=&nai=           -> String irum, Integer nai
+            // irum과 nai를 입력하지 않아도 서버로 넘어가요....비어있는 채로
+            console.log($('#frm').serialize());
+        })
+    </script>
+</head>
+<body>
+    <!--
+        서버에서 이폼을 받으면 String irum, Integer nai로 받는다
+    -->
+    <form id='frm'>
+        <input type="text" name="irum" id="irum">
+        <input type="text" name="nai" id="nai">
+        <input type="text" id="email">
+        <button id='ok'>ok</button>
+    </form>
+</body>
+</html>

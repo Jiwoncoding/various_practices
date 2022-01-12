@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 폼을 urlencoded 형식으로 변환
+
+            // 1. 폼을 서밋하면 자동으로 urlencoded 형식으로 날아간다
+            // $('#frm').attr('action','#').attr('method','get').submit();      메소드 체이닝
+
+            // 2. urlencoded값을 확인하고 싶다
+            $('#ok').click(function() {
+                console.log($('#frm').serialize());
+            });
+
+            // 3. 폼을 $.ajax을 이용해  urlencoded로 넘긴다면
+            $.ajax({
+                url: '',
+                data: $('#frm').serialize()
+            })
+
+        })
+       
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- form : 3개. action(보낼 url), method, enctype-->
+    <form id='frm'>
+        <input type="text" name="irum" id="irum" value='spring'><br>
+        <input type="text" name="nai" id="nai" value='20'><br>
+        <button type='button' id='ok'>확인</button>
+    </form>
+</body>
+</html>
