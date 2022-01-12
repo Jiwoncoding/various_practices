@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        글 : 123개.     페이지크기: 10.     페이지의 개수: 13.      블록크기: 5
+        pageno      이전으로      시작      마지막      다음으로        blockno    
+        1           X            1          5           6               0
+        2           X            1          5           6               0
+        3           X            1          5           6               0
+        4           X            1          5           6               0
+        5           X            1          5           6               0
+        6           5            6          10          11              1
+        7           5            6          10          11              1
+        8           5            6          10          11              1
+        9           5            6          10          11              1
+        10          5            6          10          11              1
+        11          10           11         13          X               2
+        12          10           11         13          X               2
+        13          10           11         13          X               2
+
+        block번호를 알면 이전으로, 시작, 마지막, 다음으로를 계산할 수 있다
+        block번호를 어떻게 계산하지? pageno를 가지고 계산할 수 있다
+                                   자바라면 (pageno-1)/5
+    -->
+    <script>
+        // blockno 만들어지는 지 확인
+        for(let pageno=1; pageno<=13; pageno++) {
+            let blockno = Math.floor((pageno-1)/5);
+            console.log(pageno + " " + blockno);
+        }
+
+        // blockno에 따라 이전, 시작, 마지막, 다음이 만들어지는가?
+        for(let blockno=0; blockno<=2; blockno++) {
+            let prev = blockno * 5;
+            let start = prev + 1;
+            let end = prev + 5;
+            let next = end + 1;
+            console.log(blockno + ' ' + prev + ' ' + start + ' ' + end + ' ' + next);
+        }
+        // 출력해보면
+        // blockno  prev        start       end     next
+        //  0          0        1           5       6
+        //  1          5        6           10      11
+        //  2          10       11          15      16
+
+        // 그래서 마지막 블록의 end와 next를 바꿔줘야 한다
+        // end는 페이지의 개수와 같아야 한다
+        // next는 0이어야 한다
+    </script>
+</body>
+</html>
