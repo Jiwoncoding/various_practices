@@ -7,4 +7,4 @@
    : jQuery $.ajax와 $.each,js객체를 활용한 버튼 클릭시 프로필사진, 이름, 주소, 연락처 변경
 6. 01-07.txt, Car.java, Marine.java, Member.java, MyDate.java, Test1~4.java, 통장.java, ChaTest.java, StaticTest1~7.java 
    : Java- 종류, 개발 방식, 필드, 생성자, Lombok, 메소드, StaticTest
-7. 
+7. pagination.html, pagination2.js, pagination_test.html : pagination 생성
