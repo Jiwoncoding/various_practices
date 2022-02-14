@@ -1,1 +1,39 @@
-메뉴입니다
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>Insert title here</title>
+<script>
+	$(function() {
+		$('#login').click(function() {
+			location.href = "/sample2/login";
+		});
+		$('#logout').click(function() {
+			const $form = $('<form>').attr('action','/sample2/logout').attr('method','post').appendTo($('body'));
+			
+			// 폼 로그인은 csrf를 활성화한다 -> MVC 방식에서 화면 위변조를 잡아내기 위해 사용하는 기술
+			// 서버가 보내준 csrf 문자열 토큰을 서버로 재전송하면 서버에서 확인
+			// get 방식은 csrf 개념이 없다(get은 서버상태 변경 X, post는 서버상태 변경)
+			
+			// 아래처럼 작성하면 '${_csrf.token}'를 문자열로 취급한다
+			// $('<input>').attr('type','hidden').attr('name','_csrf').val('${_csrf.token}').appendTo($form);
+			$('<input>').attr('type','hidden').attr('name','_csrf').val($('#csrf').val()).appendTo($form);
+			$form.submit();
+		});
+	});
+</script>
+</head>
+<body>
+	<span th:value='${_csrf.token}' id="csrf"></span>
+	
+	<!-- 로그인했으면 로그아웃 버튼 표시, 안했으면 로그인 버튼 출력 -->
+	<!-- 타임리프에서 스프링 시큐리티 표현식을 사용하기 위해서 라이브러리를 추가 -->
+	<button sec:authorize="isAnonymous()" id="login">로그인</button>
+	<button sec:authorize="isAuthenticated()" id="logout">로그아웃</button>
+	
+	<!-- 권한 표시 -->
+	<div sec:authorize="hasRole('ADMIN')">어드민 유저</div>
+	<div sec:authorize="hasRole('USER')">일반 유저</div>
+</body>
+</html>
